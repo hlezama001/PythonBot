@@ -1,4 +1,5 @@
 from botbuilder.core import TurnContext,ActivityHandler,ConversationState,MessageFactory
+from botbuilder.core.teams import TeamsActivityHandler, TeamsInfo
 from botbuilder.dialogs import DialogSet,WaterfallDialog,WaterfallStepContext
 from botbuilder.dialogs.prompts import TextPrompt,NumberPrompt,PromptOptions,ChoicePrompt, PromptValidatorContext
 from botbuilder.dialogs.choices import Choice
@@ -16,7 +17,7 @@ authcookie = Office365(website, username=sharepointUsername,
 password=sharepointPassword).GetCookies()    
 site = Site(sharepointSite, version=Version.v2016, authcookie=authcookie) 
 
-class BotDialog(ActivityHandler):
+class BotDialog(TeamsActivityHandler):
     def __init__(self,conversation:ConversationState):
         self.con_statea = conversation
         self.state_prop = self.con_statea.create_property("dialog_set")
