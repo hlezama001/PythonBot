@@ -36,5 +36,6 @@ def messages():
 @app.route('/', methods = ['GET', 'POST'])
 def web():
     return render_template('bot.html')
+
 if __name__ == '__main__':
     app.run('localhost',3978)
